@@ -5,7 +5,7 @@ const chalk = require('chalk');
 
 function viewapp(d){
     const testCases = [
-        { "Bill Amount": d[0], "tip (%)": d[1], "tip": d[2],"Total $": d[3]},
+        { "leftValue": d[0], "leftUnit": d[1], "rightValue": d[2],"rightUnit": d[3]},
     ];
   
     printTable(testCases);
@@ -26,8 +26,57 @@ function getTitle(){
 }
 
 
-module.exports = {
-    getTitle,
-    viewapp
+ function yesorno(a){
+    'use strict';
+    var inquirer = require('inquirer');
+
+    var questions = [
+    {
+        type: 'confirm',
+        name: 'toBeDelivered',
+        message: 'Left temperature is source?',
+        default: false,
+    },
+
+    ];
+
+    inquirer.prompt(questions).then((answers) => {
+    console.log('\nOrder receipt:');
+    console.log(JSON.stringify(answers, null, '  '));
+    });
 }
 
+
+
+    function chooses(a){
+        'use strict';
+    var inquirer = require('inquirer');
+
+    var questions = [
+    {
+        type: 'rawlist',
+        name: 'frommmmmmm',
+        message: 'From',
+        choices: ['Celsius', 'fahrenheit', 'Kelvin'],
+    },
+    {
+        type: 'rawlist',
+        name: 'tooooooooo',
+        message: 'To',
+        choices: ['Celsius', 'fahrenheit', 'Kelvin'],
+    },
+    ];
+
+    inquirer.prompt(questions).then((answers) => {
+    console.log('\nOrder receipt:');
+    console.log(JSON.stringify(answers, null, '  '));
+    });
+ }
+
+
+module.exports = {
+    getTitle,
+    viewapp,
+    yesorno,
+    chooses
+}
