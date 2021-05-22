@@ -1,7 +1,7 @@
 const { printTable } = require('console-table-printer');
 const figlet = require('figlet');
 const chalk = require('chalk');
-
+var inquirer = require('inquirer');
 
 function viewapp(d){
     const testCases = [
@@ -26,57 +26,40 @@ function getTitle(){
 }
 
 
- function yesorno(a){
-    'use strict';
-    var inquirer = require('inquirer');
+function chooses(a){
+    return inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'toBeDelivered',
+            message: 'Left temperature is source?',
+            default: false,
+      
+        },
+        {
+            name: 'temperature',
+            type: 'input',
+            message: "Temperature value to convert?  :",
+            default: "",
+        },
 
-    var questions = [
-    {
-        type: 'confirm',
-        name: 'toBeDelivered',
-        message: 'Left temperature is source?',
-        default: false,
-    },
-
-    ];
-
-    inquirer.prompt(questions).then((answers) => {
-    console.log('\nOrder receipt:');
-    console.log(JSON.stringify(answers, null, '  '));
-    });
+        {
+            type: 'rawlist',
+            name: 'froooom',
+            message: 'From',
+            choices: ['Celsius', 'fahrenheit', 'Kelvin'],
+        },
+        {
+            type: 'rawlist',
+            name: 'toooo',
+            message: 'To',
+            choices: ['Celsius', 'fahrenheit', 'Kelvin'],
+        }
+    ])    
 }
-
-
-
-    function chooses(a){
-        'use strict';
-    var inquirer = require('inquirer');
-
-    var questions = [
-    {
-        type: 'rawlist',
-        name: 'frommmmmmm',
-        message: 'From',
-        choices: ['Celsius', 'fahrenheit', 'Kelvin'],
-    },
-    {
-        type: 'rawlist',
-        name: 'tooooooooo',
-        message: 'To',
-        choices: ['Celsius', 'fahrenheit', 'Kelvin'],
-    },
-    ];
-
-    inquirer.prompt(questions).then((answers) => {
-    console.log('\nOrder receipt:');
-    console.log(JSON.stringify(answers, null, '  '));
-    });
- }
-
 
 module.exports = {
     getTitle,
     viewapp,
-    yesorno,
     chooses
 }
+

@@ -2,11 +2,10 @@
 const { printTable } = require('console-table-printer');
 const figlet = require('figlet');
 const chalk = require('chalk');
-const {viewapp,getTitle,yesorno,chooses} = require('./view')
+const {viewapp,getTitle,chooses} = require('./view')
 const {update_table} = require('./update')
 const {app} = require('./app')
+var inquirer = require('inquirer');
 
-
-
-/*app([0,0,0,0])*/
-console.log(yesorno())
+t=[0,0,0,0]
+console.log(app(t));
