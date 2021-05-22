@@ -6,15 +6,14 @@ const {update_table} = require('./update')
 var inquirer = require('inquirer');
 
 
-function app(d){
-    //while (true) {
+async function app(d){
+    while (true) {
         const currentView = viewapp(d);
         console.clear()
         console.log(getTitle());
         console.log(viewapp(currentView));
-        console.log(chooses(currentView));
-        /*d = update_table(ba_2, tipp_2);*/
-    //}
+        const {confirm,temperature,froooom,toooo} = await (chooses(d))
+    }
 }
 
 module.exports = {

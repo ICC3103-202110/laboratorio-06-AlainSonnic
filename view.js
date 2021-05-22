@@ -30,7 +30,7 @@ function chooses(a){
     return inquirer.prompt([
         {
             type: 'confirm',
-            name: 'toBeDelivered',
+            name: 'yes_or_no',
             message: 'Left temperature is source?',
             default: false,
       
