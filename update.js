@@ -1,5 +1,3 @@
-
-
 function update_table(temperature){
     return (Number(temperature))
 }

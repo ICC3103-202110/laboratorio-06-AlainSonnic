@@ -13,7 +13,7 @@ async function app(d){
         console.log(getTitle());
         console.log(viewapp(currentView));
         const {yes_or_no,temperature,froooom,toooo} = await (chooses(d));
-
+        
         if (yes_or_no === true){
             var d = [update_table(temperature),froooom,units(temperature,froooom,toooo),toooo]
         }
