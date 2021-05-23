@@ -2,12 +2,16 @@ const {inputForm, listForm} = require('./view')
 const {printTable} = require('console-table-printer')
 
 
-function update_table(yes_or_no,temperature,froooom,toooo){
-    if(temperature == 500){
-        var d = 500
+function update_table(confirm,temperature,froooom,toooo){
+    if(froooom === 'Celsius' && convert === 'kelvin'){
+        var new_temperature = temperature + 273
+        return [temperature,froooom,new_temperature,toooo]
     }
-    return (d);
-}
+    else
+        return [0,0,0,0]
+    } 
+    
+
 
 module.exports = {
     update_table

@@ -12,7 +12,8 @@ async function app(d){
         console.clear()
         console.log(getTitle());
         console.log(viewapp(currentView));
-        const {confirm,temperature,froooom,toooo} = await (chooses(d))
+        const {confirm,temperature,froooom,toooo} = await (chooses(d));
+        d = update_table(confirm,temperature,froooom,toooo);
     }
 }
 
