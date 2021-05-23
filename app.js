@@ -12,12 +12,17 @@ async function app(d){
         console.clear()
         console.log(getTitle());
         console.log(viewapp(currentView));
-        const {confirm,temperature,froooom,toooo} = await (chooses(d));
+        const {yes_or_no,temperature,froooom,toooo} = await (chooses(d));
+
+        if (yes_or_no === true){
+            var d = [update_table(temperature),froooom,units(temperature,froooom,toooo),toooo]
+        }
         
-        var d = [update_table(temperature),froooom,units(temperature,froooom,toooo),toooo]
+        else if (yes_or_no === false){ 
+            var d = [units(temperature,froooom,toooo),toooo,update_table(temperature),froooom]
+        }
     }
 }
-
 module.exports = {
     app
 }
