@@ -2,7 +2,7 @@ const { printTable } = require('console-table-printer');
 const figlet = require('figlet');
 const chalk = require('chalk');
 const {viewapp,getTitle,chooses} = require('./view')
-const {update_table} = require('./update')
+const {update_table, units} = require('./update')
 var inquirer = require('inquirer');
 
 
@@ -13,7 +13,8 @@ async function app(d){
         console.log(getTitle());
         console.log(viewapp(currentView));
         const {confirm,temperature,froooom,toooo} = await (chooses(d));
-        d = update_table(confirm,temperature,froooom,toooo);
+        
+        var d = [update_table(temperature),froooom,units(temperature,froooom,toooo),toooo]
     }
 }
 
