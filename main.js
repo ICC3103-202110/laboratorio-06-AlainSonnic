@@ -2,10 +2,10 @@
 const { printTable } = require('console-table-printer');
 const figlet = require('figlet');
 const chalk = require('chalk');
-const {viewapp,getTitle,chooses} = require('./view')
-const {update_table} = require('./update')
+const {viewapp,getTitle,chooses_1,chooses_2,chooses_3} = require('./view')
+const {update_table,añadir_ciudad,delete_ciudad} = require('./update')
 const {app} = require('./app')
 var inquirer = require('inquirer');
 
-t=[0,0,0,0]
+let t=[[""],"0","0","0"]
 console.log(app(t));

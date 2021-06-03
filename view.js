@@ -2,21 +2,23 @@ const { printTable } = require('console-table-printer');
 const figlet = require('figlet');
 const chalk = require('chalk');
 var inquirer = require('inquirer');
+const { Table } = require('console-table-printer');
 
 function viewapp(d){
-    const testCases = [
-        { "leftValue": d[0], "leftUnit": d[1], "rightValue": d[2],"rightUnit": d[3]},
-    ];
-  
-    printTable(testCases);
-    return (d);
+    const p = new Table();
+    var u = d[0].length
+    for (let i = 0; i < u ; i++){
+        p.addRow({ "City": d[0][i], "Temp": 0, "Max": 0, "Min": 0});   
+    }
+    p.printTable();
+    return d
 }
 
 
 function getTitle(){
     return chalk.green(
         figlet.textSync(
-            'Unit Converter App',
+            'Weather App',
             {
                 horizontalLayout: 'full',
                 font: 'Nancyj-Underlined'
@@ -26,40 +28,49 @@ function getTitle(){
 }
 
 
-function chooses(a){
+function chooses_1(a){
     return inquirer.prompt([
         {
-            type: 'confirm',
-            name: 'yes_or_no',
-            message: 'Left temperature is source?',
-            default: false,
+            type: 'rawlist',
+            name: 'opciones',
+            message: '',
+            choices: ['Add City', 'Update City', 'Delete City'],
       
         },
-        {
-            name: 'temperature',
-            type: 'input',
-            message: "Temperature value to convert?  :",
-            default: "",
-        },
-
-        {
-            type: 'rawlist',
-            name: 'froooom',
-            message: 'From',
-            choices: ['Celsius', 'fahrenheit', 'Kelvin'],
-        },
-        {
-            type: 'rawlist',
-            name: 'toooo',
-            message: 'To',
-            choices: ['Celsius', 'fahrenheit', 'Kelvin'],
-        }
     ])    
 }
+
+
+function chooses_2(a){
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'add_city',
+            message: "Name of the city you want to add  :",
+            default: "",    
+        }
+    ])
+
+}
+
+
+function chooses_3(a){
+    return inquirer.prompt([
+        {
+            type: 'rawlist',
+            name: 'ciudad_eliminar',
+            message: 'Pick The City to Delete',
+            choices: a[0],   
+        },
+    ])
+}
+
 
 module.exports = {
     getTitle,
     viewapp,
-    chooses
+    chooses_1,
+    chooses_2,
+    chooses_3,
 }
 

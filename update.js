@@ -2,39 +2,27 @@ function update_table(temperature){
     return (Number(temperature))
 }
 
-function units(temperature,froooom,toooo){
-    if(froooom === 'Celsius' && toooo === 'Kelvin'){
-        var t = (Number(temperature) + 273.15)
-        return t
+function añadir_ciudad(d,add_city){
+    if (d[0][0] === ""){
+        d[0].splice(0,1)
     }
+    d[0].push(add_city)
+}
 
-    else if(froooom === 'Celsius' && toooo === 'fahrenheit'){
-        var t = (Number(temperature) * 9/5) + 32
-        return t
-    }
 
-    else if(froooom === 'Kelvin' && toooo === 'Celsius'){
-        var t = (Number(temperature) - 273.15)
-        return t
-    }
-
-    else if(froooom === 'Kelvin' && toooo === 'fahrenheit'){
-        var t = ((Number(temperature) -273.15) * (9/5)) +32
-        return t
-    }
-
-    else if(froooom === 'fahrenheit' && toooo === 'Celsius'){
-        var t = ((Number(temperature) - 32) * (5/9))
-        return t
-    }
-
-    else if(froooom === 'fahrenheit' && toooo === 'Kelvin'){
-        var t = ((Number(temperature) - 32) * (5/9)) + 273.15
-        return t
+function delete_ciudad(d,ciudad_eliminar){
+    var u = d[0].length
+    let myArray = d[0]
+    for (let i = 0; i < u ; i++){
+        if (ciudad_eliminar === myArray[i]){
+            d[0].splice(i,1)
+        }
     }
 }
-    
+
+
 module.exports = {
     update_table,
-    units
+    añadir_ciudad,
+    delete_ciudad,
 }
